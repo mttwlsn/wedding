@@ -123,9 +123,9 @@
     justify-content:center;
     overflow:hidden;
     background:
-      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(92,26,46,0.35), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(140,84,100,0.12), transparent 60%),
-      var(--ink);
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(92,26,46,0.28), rgba(11,10,14,0.55) 60%),
+      linear-gradient(180deg, rgba(11,10,14,0.35) 0%, rgba(11,10,14,0.55) 55%, rgba(11,10,14,0.88) 100%),
+      url('images/hero-silhouette.jpg') center 28% / cover no-repeat;
     text-align:center;
     padding:2rem 1.5rem 4rem;
   }
@@ -259,6 +259,10 @@
   }
   @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
 
+  .cards--three{grid-template-columns:repeat(3, 1fr);}
+  @media (max-width:860px){ .cards--three{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:640px){ .cards--three{grid-template-columns:1fr;} }
+
   .card{
     background:var(--slate);
     border:1px solid rgba(195,154,92,0.18);
@@ -289,6 +293,30 @@
     transition:background 0.25s, color 0.25s;
   }
   .btn:hover{background:var(--gold); color:var(--ink);}
+
+  /* ---------- PHOTO FRAME ---------- */
+  .photo-frame{
+    display:inline-block;
+    max-width:360px;
+    margin:2.4rem auto 0;
+    padding:12px;
+    background:var(--slate);
+    border:1px solid rgba(195,154,92,0.35);
+    box-shadow:0 0 26px rgba(195,154,92,0.12);
+  }
+  .photo-frame img{
+    width:100%;
+    display:block;
+    aspect-ratio:2/3;
+    object-fit:cover;
+  }
+  .photo-frame__caption{
+    margin-top:0.9rem;
+    font-family:var(--display);
+    font-style:italic;
+    color:var(--bone-dim);
+    font-size:1.05rem;
+  }
 
   /* ---------- TIMELINE ---------- */
   .timeline{
@@ -324,6 +352,7 @@
     .timeline__item:nth-child(2) .timeline__flame{ animation-delay:0.4s; }
     .timeline__item:nth-child(3) .timeline__flame{ animation-delay:0.8s; }
     .timeline__item:nth-child(4) .timeline__flame{ animation-delay:1.2s; }
+    .timeline__item:nth-child(5) .timeline__flame{ animation-delay:1.6s; }
   }
   @keyframes flicker{
     0%,100%{ opacity:1; transform:scale(1); }
@@ -468,11 +497,17 @@
     <p class="eyebrow">The Details</p>
     <h2>An Evening at Le Château</h2>
     <svg class="divider" viewBox="0 0 120 18"><line x1="0" y1="9" x2="46" y2="9" /><circle cx="60" cy="9" r="4" /><line x1="74" y1="9" x2="120" y2="9" /></svg>
-    <p class="lede">Our ceremony and reception will unfold inside a restored Gilded Age mansion on a quiet Westchester hilltop — the kind of grand, moody architecture we couldn't resist for a winter wedding.</p>
+    <p class="lede">We'll say our vows at a historic Westchester church, then continue the celebration at a restored Gilded Age hilltop mansion — the kind of grand, moody architecture we couldn't resist for a winter wedding.</p>
 
-    <div class="cards">
+    <div class="cards cards--three">
       <div class="card">
-        <h3>Ceremony &amp; Reception</h3>
+        <h3>Ceremony</h3>
+        <p><strong>St. Luke's Episcopal Church</strong></p>
+        <p class="muted">331 Route 100 (Somerstown Turnpike)<br>Somers, NY 10589</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=St+Luke%27s+Episcopal+Church+331+Route+100+Somers+NY+10589" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <div class="card">
+        <h3>Reception</h3>
         <p><strong>Le Château</strong></p>
         <p class="muted">1410 Old Post Road (Route 35)<br>South Salem, NY 10590</p>
         <p class="muted">(914) 763-1410 · <a href="https://www.lechateaubanquets.com" target="_blank" rel="noopener">lechateaubanquets.com</a></p>
@@ -481,7 +516,7 @@
       <div class="card">
         <h3>Attire</h3>
         <p><strong>Black Tie Optional</strong></p>
-        <p class="muted">In the spirit of midnight romance — think velvet, deep jewel tones, and a touch of drama. February in an old stone mansion runs cool, so plan a wrap or coat for outdoor photos.</p>
+        <p class="muted">In the spirit of midnight romance — think velvet, deep jewel tones, and a touch of drama. February runs cool, so plan a wrap or coat for outdoor photos.</p>
       </div>
     </div>
   </div>
@@ -498,25 +533,30 @@
       <div class="timeline__item">
         <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
         <p class="timeline__title">Ceremony</p>
-        <p class="timeline__desc">Vows exchanged inside Le Château.</p>
+        <p class="timeline__desc">St. Luke's Episcopal Church, Somers, NY.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
+        <p class="timeline__title">Hotel Check-In</p>
+        <p class="timeline__desc">Rooms at Hotel Zero Degrees open at 4:00 PM.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
+        <p class="timeline__title">Shuttles to Le Château</p>
+        <p class="timeline__desc">Shuttles will run from the hotel — no need to drive or park.</p>
       </div>
       <div class="timeline__item">
         <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
         <p class="timeline__title">Cocktail Hour</p>
-        <p class="timeline__desc">Drinks and hors d'oeuvres in the gardens and gallery.</p>
+        <p class="timeline__desc">Drinks and hors d'oeuvres at Le Château.</p>
       </div>
       <div class="timeline__item">
         <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
         <p class="timeline__title">Reception &amp; Dinner</p>
-        <p class="timeline__desc">Toasts, dinner, and a first dance in the ballroom.</p>
-      </div>
-      <div class="timeline__item">
-        <span class="timeline__flame"><svg viewBox="0 0 24 24"><path d="M12 2c2 4-3 5-3 9a3 3 0 006 0c0-2-1-3-1-5 2 1 3 4 3 6a5 5 0 01-10 0C7 8 10 6 12 2z"/></svg></span>
-        <p class="timeline__title">Dancing Until Midnight</p>
-        <p class="timeline__desc">We'll close out the night on the dance floor.</p>
+        <p class="timeline__desc">Toasts, dinner, and dancing at Le Château until 11:00 PM.</p>
       </div>
     </div>
-    <p class="form-note" style="margin-top:2rem;">Exact timing will be included on your formal invitation.</p>
+    <p class="form-note" style="margin-top:2rem;">Exact ceremony time will be included on your formal invitation.</p>
   </div>
 </section>
 
